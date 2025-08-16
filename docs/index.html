@@ -1,6 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>RDJ Presupuesto</title>
+</head>
+<body>
+
 <div class="rdj-wrap">
   <div class="rdj-header"><h2>Obtener el presupuesto gratuito</h2></div>
-  <form class="rdj-form">
+  <form id="form-pres" class="rdj-form">
     <label>Nombre completo <input type="text" name="nombre" placeholder="Ej: Roberto Rabilero" required></label>
     <label>Email <input type="email" name="email" placeholder="tu@email.com" required></label>
     <label>Teléfono <input type="tel" name="telefono" placeholder="737-306-4060" required></label>
@@ -8,7 +16,7 @@
     <label>Tipo de limpieza <select name="tipo" required>
         <option value="estandar">Estándar — $0.20 / pie²</option>
         <option value="profunda">Profunda — $0.22 / pie²</option>
-        <option value="post">Post-construcción — $0.24 / pie²</option>
+        <option value="post">Post–construcción — $0.24 / pie²</option>
         <option value="premium">Premium — $0.26 / pie²</option>
         <option value="garaje">Garaje / Patio — $0.16 / pie²</option>
     </select></label>
@@ -28,6 +36,41 @@
   </form>
 </div>
 
+<script>
+document.getElementById('form-pres').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  const form = e.target;
+  const datos = {
+    nombre: form.nombre.value,
+    email: form.email.value,
+    telefono: form.telefono.value,
+    metros: form.metros.value,
+    tipo: form.tipo.value,
+    refrigerador: form.refrigerador.checked ? "Sí" : "No",
+    horno: form.horno.checked ? "Sí" : "No",
+    microondas: form.microondas.checked ? "Sí" : "No",
+    ventanas: form.ventanas.value || "0",
+    persianas: form.persianas.value || "0",
+    muebles: form.muebles.checked ? "Sí" : "No",
+    comentarios: form.comentarios.value,
+    fecha: form.fecha.value
+  };
+
+  try {
+    await fetch("https://n8n.srv867830.hstgr.cloud/webhook/94579a03-81e0-48fd-a93c-f26ab9d49278", {
+      method: "POST",
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify(datos)
+    });
+    alert("¡Enviado correctamente!");
+    form.reset();
+  } catch(err) {
+    console.error(err);
+    alert("Error al enviar. Intenta más tarde.");
+  }
+});
+</script>
+
 <style>
 .rdj-wrap{max-width:680px;margin:40px auto;border-radius:22px;background:#fff;overflow:hidden;box-shadow:0 22px 55px rgba(0,0,0,0.25);font-family:'Arial',sans-serif;}
 .rdj-header{background:#01365c;color:#fff;padding:30px;text-align:center;}
@@ -46,3 +89,7 @@
 .rdj-form button{width:100%;padding:16px;margin-top:35px;background:#ffcd00;color:#000;font-weight:700;border:none;border-radius:12px;font-size:20px;cursor:pointer;transition:0.23s;}
 .rdj-form button:hover{background:#e3b600;}
 </style>
+
+</body>
+</html>
+  
