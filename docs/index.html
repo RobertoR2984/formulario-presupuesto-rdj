@@ -1,0 +1,48 @@
+<div class="rdj-wrap">
+  <div class="rdj-header"><h2>Obtener el presupuesto gratuito</h2></div>
+  <form class="rdj-form">
+    <label>Nombre completo <input type="text" name="nombre" placeholder="Ej: Roberto Rabilero" required></label>
+    <label>Email <input type="email" name="email" placeholder="tu@email.com" required></label>
+    <label>Teléfono <input type="tel" name="telefono" placeholder="737-306-4060" required></label>
+    <label>Pies² aproximados del área <input type="number" name="metros" placeholder="Ej: 1200" required></label>
+    <label>Tipo de limpieza <select name="tipo" required>
+        <option value="estandar">Estándar — $0.20 / pie²</option>
+        <option value="profunda">Profunda — $0.22 / pie²</option>
+        <option value="post">Post-construcción — $0.24 / pie²</option>
+        <option value="premium">Premium — $0.26 / pie²</option>
+        <option value="garaje">Garaje / Patio — $0.16 / pie²</option>
+    </select></label>
+
+    <h3>Extras opcionales</h3>
+
+    <div class="extra-flex"><label><input type="checkbox" name="refrigerador"><span>Limpieza de refrigerador — $50</span></label></div>
+    <div class="extra-flex"><label><input type="checkbox" name="horno"><span>Limpieza de horno — $50</span></label></div>
+    <div class="extra-flex"><label><input type="checkbox" name="microondas"><span>Limpieza de microondas — $50</span></label></div>
+    <div class="extra-flex"><label><input type="number" name="ventanas" placeholder="Cantidad"><span>Ventanas interiores ($10 c/u)</span></label></div>
+    <div class="extra-flex"><label><input type="number" name="persianas" placeholder="Cantidad"><span>Persianas ($3 c/u)</span></label></div>
+    <div class="extra-flex"><label><input type="checkbox" name="muebles"><span>Aspirado de muebles — $25</span></label></div>
+
+    <label>Comentarios <textarea name="comentarios" placeholder="Cuéntanos algo importante…"></textarea></label>
+    <label>Fecha que prefieres <input type="date" name="fecha" required></label>
+    <button type="submit">OBTENER PRESUPUESTO</button>
+  </form>
+</div>
+
+<style>
+.rdj-wrap{max-width:680px;margin:40px auto;border-radius:22px;background:#fff;overflow:hidden;box-shadow:0 22px 55px rgba(0,0,0,0.25);font-family:'Arial',sans-serif;}
+.rdj-header{background:#01365c;color:#fff;padding:30px;text-align:center;}
+.rdj-form{padding:35px;}
+.rdj-form label{display:block;margin-top:20px;font-weight:600;color:#01365c;}
+.rdj-form input,.rdj-form select,.rdj-form textarea{width:100%;padding:13px;margin-top:6px;border:1px solid #ccc;border-radius:9px;font-size:15px;}
+.rdj-form h3{margin-top:32px;color:#01365c;margin-bottom:6px;font-size:20px;border-bottom:2px solid #01365c;padding-bottom:5px;}
+
+.extra-flex{margin-top:14px;}
+.extra-flex input{appearance:none;width:20px;height:20px;border-radius:4px;border:2px solid #01365c;margin-right:12px;cursor:pointer;position:relative;top:4px;}
+.extra-flex input:checked{background:#01365c}
+.extra-flex input:checked::after{content:"✓";position:absolute;color:#fff;font-size:13px;left:4px;top:-2px;}
+.extra-flex label{display:flex;align-items:center;}
+.extra-flex span{font-weight:600;color:#01365c;}
+
+.rdj-form button{width:100%;padding:16px;margin-top:35px;background:#ffcd00;color:#000;font-weight:700;border:none;border-radius:12px;font-size:20px;cursor:pointer;transition:0.23s;}
+.rdj-form button:hover{background:#e3b600;}
+</style>
